@@ -121,6 +121,7 @@
                                                 <h4 class="title">{{__('Availability On')}} <time class="time_slog_date">{{date('D, d F, Y')}}</time></h4>
                                                 <p class="alert alert-warning " id="time_slot_warning">{{__('select date first')}}</p>
                                                 <ul class="time-slot time" id="time_slot_wrapper">
+                                                    <h1>asdasdas</h1>
                                                     {{-- @foreach($item->booking_time_ids as $time)
                                                         <li data-id="{{$time['id']}}">{{$time['time']}}</li>
                                                     @endforeach  --}}
