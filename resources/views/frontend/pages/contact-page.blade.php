@@ -117,6 +117,110 @@
             </div>
         </div>
         <!-- End of Google Map -->
+
+        {{-- For Clear Lake --}}
+        <h6>Clear Lake</h6>
+    </body>
+        @if(!empty(get_static_option('contact_page_contact_info_section_status')))
+        <div class="inner-contact-section padding-top-120 padding-bottom-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="single-contact-item">
+                            <div class="icon style-01">
+                                <i class="far fa-envelope"></i>
+                            </div>
+                            <div class="content">
+                                <h5 class="title">Email Adress</h5>
+                                <p class="details">office@truefamilycareclinic.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="single-contact-item">
+                            <div class="icon style-02">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="content">
+                                <h5 class="title">Phone</h5>
+                                <p class="details">P:832.426.3190</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="single-contact-item">
+                            <div class="icon style-03">
+                                <i class="far fa-clock"></i>
+                            </div>
+                            <div class="content">
+                                <h5 class="title">Open Hours</h5>
+                                <p class="details">Mon-Fri<br> 9am - 5:30pm</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="single-contact-item">
+                            <div class="icon style-04">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="content">
+                                <h5 class="title">Location</h5>
+                                <p class="details">1821 Eldorado Blvd. Houston, TX 77062</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+        <!-- End of duplicated content -->
+        
+        <!-- Hardcoded Google Map -->
+        <div class="contact-section padding-bottom-120">
+            <div class="container">
+                <div class="row no-gutters">
+                    <div class="col-lg-6">
+                        <div class="contact-info">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="section-title">
+                                        <h4 class="title">{{get_static_option('contact_page_'.$user_select_lang_slug.'_form_section_title')}}</h4>
+                                    </div>
+                                    @include('backend.partials.message')
+                                    @if($errors->any())
+                                        <ul class="alert alert-danger">
+                                            @foreach($errors->all() as $error)
+                                                <li>{{$error}}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </div>
+                            </div>
+                            <form action="{{route('frontend.contact.message')}}" method="post" class="contact-page-form" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="captcha_token" id="gcaptcha_token">
+                                {!! render_form_field_for_frontend(get_static_option('contact_page_contact_form_fields')) !!}
+            
+                                <div class="btn-wrapper">
+                                    <button type="submit" class="boxed-btn reverse-color">{{get_static_option('contact_page_'.$user_select_lang_slug.'_form_submit_btn_text')}}</button>
+                                </div>
+            
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="contact_map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3469.924676340222!2d-95.12544462395762!3d29.576794840575374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86409d0027d5e09b%3A0xe6d52bb3f4d00f27!2sTrue%20Family%20Clinic%20%233!5e0!3m2!1sen!2sus!4v1709581140764!5m2!1sen!2sus"
+                                width="600" height="450" style="border:0;" allowfullscreen=""
+                                loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Google Map -->
         
     @endif
 @endsection

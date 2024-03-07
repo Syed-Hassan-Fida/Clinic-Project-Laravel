@@ -147,10 +147,24 @@ class AppointmentController extends Controller
                 });
             
             }
+
+            // updated logic
+            $available_booking_time = [];
+            $all_booking_time = AppointmentBookingTime::where('status','publish')->get();
+
+            foreach($all_booking_time as $item){
+                $ids = array_column($appointment_details->booking_time_ids, 'id');
+                if (in_array($item->id, $ids)) {
+                    $available_booking_time[] = $item;
+                }
+            }
+
             return response()->json([
-                'existing_booking_item' => $all_booking,
-                'available_booking_time' => $all_booking_time,
-                'requested_booking_date' => $request->date
+                // 'existing_booking_item' => $all_booking,
+                // 'available_booking_time' => $all_booking_time,
+                // 'requested_booking_date' => $request->date,
+                // 'appointment_details' => $appointment_details->booking_time_ids,
+                'available_booking_time' => $available_booking_time,
                 ]
             );
     }

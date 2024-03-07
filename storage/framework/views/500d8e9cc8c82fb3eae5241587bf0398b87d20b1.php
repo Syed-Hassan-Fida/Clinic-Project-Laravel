@@ -153,10 +153,7 @@
                                                 <h4 class="title"><?php echo e(__('Availability On')); ?> <time class="time_slog_date"><?php echo e(date('D, d F, Y')); ?></time></h4>
                                                 <p class="alert alert-warning " id="time_slot_warning"><?php echo e(__('select date first')); ?></p>
                                                 <ul class="time-slot time" id="time_slot_wrapper">
-                                                    <h1>asdasdas</h1>
-                                                    <?php $__currentLoopData = $item->booking_time_ids; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $time): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                        <li data-id="<?php echo e($time['id']); ?>"><?php echo e($time['time']); ?></li>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+                                                    
                                                 </ul>
                                             </div>
                                         </div>
